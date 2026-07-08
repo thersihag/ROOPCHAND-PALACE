@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roopchand Palace - Hansi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .photo-grid img {
+            transition: all 0.3s ease;
+        }
+        .photo-grid img:hover {
+            transform: scale(1.05);
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.2);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <main class="w-full max-w-md mx-auto px-4 py-8 flex-grow">
+       
+        <header class="text-center mb-8">
+            <div >
+                <img src="logo.jpg" onclick="showImage(this)"  alt=""  class="w-24 h-24  rounded-full mx-auto flex items-center justify-center shadow-md mb-4">
+              
+            </div>
+            <h1 class="text-3xl font-bold tracking-tight text-slate-900">ROOPCHAND PALACE</h1>
+            <p class="text-amber-600 font-semibold text-sm mt-1">Premium Banquet & Wedding Venue</p>
+            <p class="text-sm text-slate-500 mt-2">
+                <i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> Hansi, Haryana
+            </p>
+            
+            <div class="inline-block mt-4 bg-emerald-100 text-emerald-700 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                🟢 Booking Open
+            </div>
+        </header>
+
+        <!-- Photo Gallery -->
+        <section class="mb-8">
+            <h3 class="text-sm font-semibold text-slate-400 mb-3 px-1">Gallery</h3>
+            <div class="photo-grid grid grid-cols-3 gap-2 rounded-2xl overflow-hidden">
+                <img src="images-1.jpg" onclick="showImage(this)" class="w-full h-28 object-cover cursor-pointer rounded-xl" alt="">
+                <img src="images-2.jpg" onclick="showImage(this)" class="w-full h-28 object-cover cursor-pointer rounded-xl" alt="">
+                <img src="images-3.jpg" onclick="showImage(this)" class="w-full h-28 object-cover cursor-pointer rounded-xl" alt="">
+                <img src="images-4.jpg" onclick="showImage(this)" class="w-full h-28 object-cover cursor-pointer rounded-xl" alt="">
+                <img src="images-5.jpg" onclick="showImage(this)" class="w-full h-28 object-cover cursor-pointer rounded-xl" alt="">
+            </div>
+        </section>
+
+        <!-- Quick Info -->
+        <section class="grid grid-cols-2 gap-3 mb-6">
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-3">
+                <div class="p-3 bg-amber-50 rounded-xl text-amber-600"><i class="fa-solid fa-users text-2xl"></i></div>
+                <div>
+                    <p class="text-xs text-slate-400">Capacity</p>
+                    <p class="font-bold text-lg">2000-3000</p>
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-3">
+                <div class="p-3 bg-amber-50 rounded-xl text-amber-600"><i class="fa-solid fa-car text-2xl"></i></div>
+                <div>
+                    <p class="text-xs text-slate-400">Parking</p>
+                    <p class="font-bold text-lg">400+ Cars</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Buttons -->
+        <section class="space-y-3 mb-8">
+            <a href="tel:+919812157508" 
+               class="flex items-center justify-between w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold p-5 rounded-2xl shadow-lg hover:brightness-105 transition">
+                <span class="flex items-center text-lg">
+                    <i class="fa-solid fa-phone mr-3"></i> 
+                    Call Angrej Saini
+                </span>
+                <span class="text-sm bg-white/20 px-3 py-1 rounded-lg">+91 98121 57508</span>
+            </a>
+
+            <a href="https://wa.me/919812157508?text=Hi,%20I%20want%20to%20book%20Roopchand%20Palace" target="_blank"
+               class="flex items-center w-full bg-white border border-emerald-200 text-slate-700 font-medium p-5 rounded-2xl shadow-sm hover:bg-emerald-50 transition">
+                <i class="fa-brands fa-whatsapp text-3xl text-emerald-500 mr-4"></i>
+                <div>
+                    <span class="block font-semibold">Chat on WhatsApp</span>
+                </div>
+            </a>
+        </section>
+
+        <!-- Map -->
+        <section class="mb-8">
+            <h3 class="text-sm font-semibold text-slate-400 mb-3 px-1">Our Location</h3>
+            <div class="rounded-3xl overflow-hidden shadow-md border border-slate-100">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3486.7742615669367!2d75.95733487502496!3d29.082814863491564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3912398b702ef793%3A0xcf7b69563d438196!2sRoopchand%20Palace!5e0!3m2!1sen!2sin!4v1783477706917!5m2!1sen!2sin" 
+                        width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <!-- Facilities -->
+        <section class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm mb-6">
+            <h3 class="text-sm font-bold text-slate-400 uppercase mb-4">Premium Facilities</h3>
+            <ul class="space-y-3 text-sm">
+                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Fully Air-Conditioned Hall (600 Guests)</li>
+                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> 1 Acre Beautiful Lawn</li>
+                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> AC Guest Rooms</li>
+                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Modern Kitchen</li>
+                <li class="flex items-center"><i class="fa-solid fa-check text-emerald-500 mr-3"></i> Elevator Facility</li>
+            </ul>
+        </section>
+
+        <!-- Ideal For -->
+        <section class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+            <h3 class="text-sm font-bold text-slate-400 uppercase mb-4">Ideal For</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-amber-50 text-amber-700 text-xs px-4 py-2 rounded-2xl">💒 Weddings</span>
+                <span class="bg-amber-50 text-amber-700 text-xs px-4 py-2 rounded-2xl">🥂 Receptions</span>
+                <span class="bg-amber-50 text-amber-700 text-xs px-4 py-2 rounded-2xl">💍 Engagements</span>
+                <span class="bg-amber-50 text-amber-700 text-xs px-4 py-2 rounded-2xl">🎂 Birthdays</span>
+                <span class="bg-amber-50 text-amber-700 text-xs px-4 py-2 rounded-2xl">🏢 Corporate Events</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-btn flex flex-col gap-3">
+        <!-- Call Button -->
+        <a href="tel:+919812157508" 
+           class="w-14 h-14 bg-green-600 hover:bg-green-700 text-white rounded-2xl flex items-center justify-center text-3xl shadow-xl transition-all active:scale-95">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        
+        <!-- Location Button -->
+        <a href="https://maps.google.com/?q=Shiv+Colony,+Malik+Hospital+Road,+Near+Railway+Crossing,+Hansi,+Haryana" target="_blank"
+           class="w-14 h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl flex items-center justify-center text-3xl shadow-xl transition-all active:scale-95">
+            <i class="fa-solid fa-location-dot"></i>
+        </a>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content relative max-w-lg">
+            <img id="modalImage" src="" class="rounded-2xl w-full">
+            <button onclick="closeModal()" 
+                    class="absolute -top-4 -right-4 bg-white text-slate-800 w-10 h-10 rounded-full flex items-center justify-center shadow-lg text-3xl leading-none">
+                ×
+            </button>
+        </div>
+    </div>
+
+    <footer class="text-center py-6 text-xs text-slate-400 bg-white border-t mt-auto">
+        ROOPCHAND PALACE • HANSI, HARYANA
+    </footer>
+
+    <script>
+        function showImage(img) {
+            document.getElementById('modalImage').src = img.src;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+</html>
